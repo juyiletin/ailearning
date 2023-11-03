@@ -23,15 +23,15 @@ n_neighbors = 3
 # iris = datasets.load_iris()
 # X = iris.data[:, :2]  # 我们只采用前两个feature. 我们可以使用二维数据集避免这个丑陋的切片
 # y = iris.target
-
-# print 'X=', type(X), X
-# print 'y=', type(y), y
+#
+# print('X=', type(X), X)
+# print('y=', type(y), y)
 
 X = array([[-1.0, -1.1], [-1.0, -1.0], [0, 0], [1.0, 1.1], [2.0, 2.0], [2.0, 2.1]])
 y = array([0, 0, 0, 1, 1, 1])
 
-# print 'X=', type(X), X
-# print 'y=', type(y), y
+print('X=', type(X), X)
+print('y=', type(y), y)
 
 h = .02  # 网格中的步长
 
@@ -53,7 +53,8 @@ for weights in ['uniform', 'distance']:
     y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
     xx, yy = np.meshgrid(np.arange(x_min, x_max, h),
                          np.arange(y_min, y_max, h))
-    Z = clf.predict(np.c_[xx.ravel(), yy.ravel()])
+    tmp = np.c_[xx.ravel(), yy.ravel()]
+    Z = clf.predict(tmp)
 
     # 将结果放入一个彩色图中
     Z = Z.reshape(xx.shape)
